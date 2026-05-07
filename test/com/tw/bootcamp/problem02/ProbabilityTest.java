@@ -7,37 +7,47 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ProbabilityTest {
     @Test
     void shouldReturnProbabilityOfGettingTails() {
-        Probability chanceOfGettingTails = Probability.chanceOfGetting(0.5);
-        assertEquals(Probability.chanceOfGetting(0.5), chanceOfGettingTails);
+        Probability chanceOfGettingTails = Probability.create(0.5);
+        assertEquals(Probability.create(0.5), chanceOfGettingTails);
     }
 
     @Test
     void shouldReturnProbabilityOfNotGettingTails() {
-        Probability chanceOfNotGettingTails = Probability.chanceOfNotGetting(0.5);
-        assertEquals(Probability.chanceOfNotGetting(0.5), chanceOfNotGettingTails);
+        Probability probability = Probability.create(0.5);
+        Probability chanceOfNotGettingTails = probability.not();
+
+        assertEquals(Probability.create(0.5), chanceOfNotGettingTails);
     }
 
     @Test
     void shouldReturnProbabilityOfGettingTails_whenCoinCountIs2() {
-        Probability probability = Probability.chanceOfGetting(0.25);
-        assertEquals(Probability.chanceOfGetting(0.25), probability);
+        Probability probabilityA = Probability.create(0.5);
+        Probability probabilityB = Probability.create(0.5);
+        Probability chancesOfGettingTwoTails = probabilityA.and(probabilityB);
+
+        assertEquals(Probability.create(0.25), chancesOfGettingTwoTails);
     }
 
     @Test
     void shouldReturnProbabilityOfGetting3_whenRollADice() {
-        Probability probability = Probability.chanceOfGetting(0.16);
-        assertEquals(Probability.chanceOfGetting(0.16), probability);
+        Probability chanceOfGetting3 = Probability.create(0.16);
+        assertEquals(Probability.create(0.16), chanceOfGetting3);
     }
 
     @Test
     void shouldReturnProbabilityOfNotGetting3_whenRollDice() {
-        Probability probability = Probability.chanceOfGetting(0.83);
-        assertEquals(Probability.chanceOfGetting(0.83), probability);
+        Probability probability = Probability.create(0.16);
+        Probability chanceOfNotGetting3 = probability.not();
+
+        assertEquals(Probability.create(0.84), chanceOfNotGetting3);
     }
 
     @Test
     void shouldReturnProbabilityOfGettingAtLeastTails_whenCoinCountIs2() {
-        Probability probability = Probability.chanceOfGettingAtLeastOne(0.5, 0.5);
-        assertEquals(Probability.chanceOfGetting(0.75), probability);
+        Probability probabilityA = Probability.create(0.5);
+        Probability probabilityB = Probability.create(0.5);
+        Probability chanceOfGettingAtLeastOneTail = probabilityA.or(probabilityB);
+
+        assertEquals(Probability.create(0.75), chanceOfGettingAtLeastOneTail);
     }
 }

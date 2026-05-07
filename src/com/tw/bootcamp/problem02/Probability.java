@@ -7,17 +7,22 @@ public class Probability {
         this.value = value;
     }
 
-    public static Probability chanceOfGetting(double value) {
+    public static Probability create(double value) {
         return new Probability(value);
     }
 
-    public static Probability chanceOfNotGetting(double value) {
-        return chanceOfGetting(1 - value);
+    public Probability not() {
+        return create(1 - value);
     }
 
-    public static Probability chanceOfGettingAtLeastOne(double probabilityOfA, double probabilityOfB) {
-        double value = probabilityOfA + probabilityOfB - probabilityOfA * probabilityOfB;
-        return chanceOfGetting(value);
+    public Probability or(Probability otherProbability) {
+        double value = this.value + otherProbability.value - this.value * otherProbability.value;
+        return create(value);
+    }
+
+    public Probability and(Probability otherProbability) {
+        double value = this.value * otherProbability.value;
+        return create(value);
     }
 
     @Override
