@@ -54,14 +54,18 @@ class ProbabilityTest {
 
     @Test
     void shouldThrowsAnError_whenProbabilityValueIsInvalid() {
-        assertThrows(
+        ImpossibleProbabilityException valueUnderThresholdError = assertThrows(
                 ImpossibleProbabilityException.class,
                 () -> Probability.create(-1)
         );
 
-        assertThrows(
+        assertEquals("Invalid Probability", valueUnderThresholdError.getMessage());
+
+        ImpossibleProbabilityException valueOverThresholdError = assertThrows(
                 ImpossibleProbabilityException.class,
                 () -> Probability.create(2)
         );
+
+        assertEquals("Invalid Probability", valueOverThresholdError.getMessage());
     }
 }
