@@ -23,4 +23,10 @@ class RectangleTest {
         Shape rectangle = new Rectangle(2, 5);
         assertEquals(14, rectangle.perimeter());
     }
+
+    @Test
+    void shouldReturnThePerimeterHavingDimension0by5() {
+        Shape rectangle = new Rectangle(0, 5);
+        assertEquals(10, rectangle.perimeter());
+    }
 }
