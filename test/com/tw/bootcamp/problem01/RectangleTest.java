@@ -7,8 +7,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class RectangleTest {
 
     @Test
-    void area() {
+    void shouldReturnTheAreaOfRectangleHavingDimension2by5() {
         Shape shape = new Rectangle(2, 5);
         assertEquals(10, shape.area());
+    }
+
+    @Test
+    void shouldReturnTheAreaOfRectangleHavingDimension0by5() {
+        Shape shape = new Rectangle(0, 5);
+        assertEquals(0, shape.area());
     }
 }
