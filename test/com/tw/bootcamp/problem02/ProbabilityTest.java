@@ -2,7 +2,7 @@ package com.tw.bootcamp.problem02;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ProbabilityTest {
     @Test
@@ -37,7 +37,7 @@ class ProbabilityTest {
 
     @Test
     void shouldReturnProbabilityOfGettingAtLeastTails_whenCoinCountIs2() {
-        Probability probability = Probability.chanceOfGetting(0.75);
+        Probability probability = Probability.chanceOfGettingAtLeastOne(0.5, 0.5);
         assertEquals(Probability.chanceOfGetting(0.75), probability);
     }
 }

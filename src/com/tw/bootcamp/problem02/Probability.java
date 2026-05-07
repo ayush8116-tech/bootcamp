@@ -1,7 +1,5 @@
 package com.tw.bootcamp.problem02;
 
-import java.util.Objects;
-
 public class Probability {
     private final double value;
 
@@ -15,6 +13,11 @@ public class Probability {
 
     public static Probability chanceOfNotGetting(double value) {
         return chanceOfGetting(1 - value);
+    }
+
+    public static Probability chanceOfGettingAtLeastOne(double probabilityOfA, double probabilityOfB) {
+        double value = probabilityOfA + probabilityOfB - probabilityOfA * probabilityOfB;
+        return chanceOfGetting(value);
     }
 
     @Override
