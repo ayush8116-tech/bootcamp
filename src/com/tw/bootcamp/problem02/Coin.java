@@ -1,15 +1,11 @@
 package com.tw.bootcamp.problem02;
 
 public class Coin {
-    public final double noOfFavorableOutcomes = 1.0;
-    private final int faceCount;
-
-    public Coin() {
-        this.faceCount = 2;
-    }
+    private final int noOfFavorableOutcomes = 1;
+    private final int possibleOutcomes = 2;
 
     public double chanceOfGettingAFace() {
-        return (noOfFavorableOutcomes / faceCount) * 100;
+        return Probability.possibilityOf(noOfFavorableOutcomes, possibleOutcomes);
     }
 
     public double chanceOfNotGettingAFace() {
