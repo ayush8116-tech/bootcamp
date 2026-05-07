@@ -24,4 +24,3 @@ public class Probability {
         return Double.compare(value, that.value) == 0;
     }
 }
-

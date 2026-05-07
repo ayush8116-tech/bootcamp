@@ -31,7 +31,13 @@ class ProbabilityTest {
 
     @Test
     void shouldReturnProbabilityOfNotGetting3_whenRollDice() {
-        Probability probability = Probability.chanceOfGetting(0.83);    
+        Probability probability = Probability.chanceOfGetting(0.83);
         assertEquals(Probability.chanceOfGetting(0.83), probability);
+    }
+
+    @Test
+    void shouldReturnProbabilityOfGettingAtLeastTails_whenCoinCountIs2() {
+        Probability probability = Probability.chanceOfGetting(0.75);
+        assertEquals(Probability.chanceOfGetting(0.75), probability);
     }
 }
