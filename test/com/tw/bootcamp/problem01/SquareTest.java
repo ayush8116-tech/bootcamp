@@ -6,37 +6,37 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SquareTest {
     @Test
-    void shouldReturnTheAreaWithSide2() {
+    void shouldReturnAreaOf4_whenSideLengthIs2() {
         Rectangle square = Rectangle.createSquare(2);
         assertEquals(4,square.area());
     }
 
     @Test
-    void shouldReturnTheAreaWithSide0() {
+    void shouldReturnAreaOf0_whenSideLengthIs0() {
         Rectangle square = Rectangle.createSquare(0);
         assertEquals(0,square.area());
     }
 
     @Test
-    void shouldReturnTheAreaWithSide2point2() {
+    void shouldReturnAreaOf4point84_whenSideLengthIs2point2() {
         Rectangle square = Rectangle.createSquare(2.2);
         assertEquals(4.84,square.area(), 0.1);
     }
 
     @Test
-    void shouldReturnThePerimeterWithSide2() {
+    void shouldReturnPerimeterOf8_whenSideLengthIs2() {
         Rectangle square = Rectangle.createSquare(2);
         assertEquals(8,square.perimeter());
     }
 
     @Test
-    void shouldReturnThePerimeterWithSide0() {
+    void shouldReturnPerimeterOf0_whenSideLengthIs0() {
         Rectangle square = Rectangle.createSquare(0);
         assertEquals(0,square.perimeter());
     }
 
     @Test
-    void shouldReturnThePerimeterWithSide2point2() {
+    void shouldReturnPerimeterOf8point8_whenSideLengthIs2point2() {
         Rectangle square = Rectangle.createSquare(2.2);
         assertEquals(8.8, square.perimeter());
     }

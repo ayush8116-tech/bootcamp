@@ -7,25 +7,25 @@ import static org.junit.jupiter.api.Assertions.*;
 class RectangleTest {
 
     @Test
-    void shouldReturnTheAreaOfRectangleHavingDimension2by5() {
+    void shouldReturnAreaOf10_whenDimensionsAre2by5() {
         Shape rectangle = Rectangle.createRectangle(2, 5);
         assertEquals(10, rectangle.area());
     }
 
     @Test
-    void shouldReturnTheAreaOfRectangleHavingDimension0by5() {
+    void shouldReturnAreaOf0_whenDimensionsAre0by5() {
         Shape rectangle = Rectangle.createRectangle(0, 5);
         assertEquals(0, rectangle.area());
     }
 
     @Test
-    void shouldReturnThePerimeterHavingDimension2by5() {
+    void shouldReturnPerimeterOf14_whenDimensionsAre2by5() {
         Shape rectangle = Rectangle.createRectangle(2, 5);
         assertEquals(14, rectangle.perimeter());
     }
 
     @Test
-    void shouldReturnThePerimeterHavingDimension0by5() {
+    void shouldReturnPerimeterOf10_whenDimensionsAre0by5() {
         Shape rectangle = Rectangle.createRectangle(0, 5);
         assertEquals(10, rectangle.perimeter());
     }
