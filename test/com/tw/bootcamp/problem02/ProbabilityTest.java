@@ -7,31 +7,31 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProbabilityTest {
     @Test
     void shouldReturnProbabilityOfGettingTails() {
-        Probability probability = Probability.create(1,2, 1);
-        assertEquals(50, probability.successProbability());
+        Probability chanceOfGettingTails = Probability.chanceOfGetting(0.5);
+        assertEquals(Probability.chanceOfGetting(0.5), chanceOfGettingTails);
     }
 
     @Test
     void shouldReturnProbabilityOfNotGettingTails() {
-        Probability probability = Probability.create(1 ,2, 1);
-        assertEquals(50, probability.failureProbability());
+        Probability chanceOfNotGettingTails = Probability.chanceOfNotGetting(0.5);
+        assertEquals(Probability.chanceOfNotGetting(0.5), chanceOfNotGettingTails);
     }
 
     @Test
     void shouldReturnProbabilityOfGettingTails_whenCoinCountIs2() {
-        Probability probability = Probability.create(2,2, 1);
-        assertEquals(25, probability.successProbability());
+        Probability probability = Probability.chanceOfGetting(0.25);
+        assertEquals(Probability.chanceOfGetting(0.25), probability);
     }
 
     @Test
     void shouldReturnProbabilityOfGetting3_whenRollADice() {
-        Probability probability = Probability.create(1 ,6, 1);
-        assertEquals(16.66, probability.successProbability(), 0.01);
+        Probability probability = Probability.chanceOfGetting(0.16);
+        assertEquals(Probability.chanceOfGetting(0.16), probability);
     }
 
     @Test
     void shouldReturnProbabilityOfNotGetting3_whenRollDice() {
-        Probability probability = Probability.create(1 ,6, 1);
-        assertEquals(83.33, probability.failureProbability(), 0.01);
+        Probability probability = Probability.chanceOfGetting(0.83);    
+        assertEquals(Probability.chanceOfGetting(0.83), probability);
     }
 }

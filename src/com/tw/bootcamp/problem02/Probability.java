@@ -1,25 +1,27 @@
 package com.tw.bootcamp.problem02;
 
+import java.util.Objects;
+
 public class Probability {
-    private final int totalPossibleOutcomes;
-    private final int favorableOutcomes;
+    private final double value;
 
-    private Probability(int favorableOutcomes, int totalPossibleOutcomes) {
-        this.totalPossibleOutcomes = totalPossibleOutcomes;
-        this.favorableOutcomes = favorableOutcomes;
+    private Probability(double value) {
+        this.value = value;
     }
 
-    public static Probability create(int itemCount, int facesPerItem, int favorableOutcomes) {
-        int possibleOutcomes = itemCount * facesPerItem;
-
-        return new Probability(favorableOutcomes, possibleOutcomes);
+    public static Probability chanceOfGetting(double value) {
+        return new Probability(value);
     }
 
-    public double successProbability() {
-        return ((double) favorableOutcomes / totalPossibleOutcomes) * 100;
+    public static Probability chanceOfNotGetting(double value) {
+        return chanceOfGetting(1 - value);
     }
 
-    public double failureProbability() {
-        return 100 - successProbability();
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Probability that = (Probability) o;
+        return Double.compare(value, that.value) == 0;
     }
 }
+
