@@ -1,4 +1,4 @@
-package com.bootcamp.problem01;
+package com.tw.bootcamp.problem01;
 
 import org.junit.jupiter.api.Test;
 
