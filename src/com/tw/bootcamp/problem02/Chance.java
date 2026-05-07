@@ -4,14 +4,15 @@ public class Chance {
     private final int possibleOutcomes;
     private final int noOfFavorableOutcomes;
 
-    private Chance(int possibleOutcomes, int noOfFavorableOutcomes) {
+    private Chance(int noOfFavorableOutcomes, int possibleOutcomes) {
         this.possibleOutcomes = possibleOutcomes;
         this.noOfFavorableOutcomes = noOfFavorableOutcomes;
     }
 
-    public static Chance createChance(int itemCount, int facesCount, int noOfFavorableOutcomes) {
+    public static Chance create(int itemCount, int facesCount, int noOfFavorableOutcomes) {
         int possibleOutcomes = itemCount * facesCount;
-        return new Chance(possibleOutcomes, noOfFavorableOutcomes);
+
+        return new Chance(noOfFavorableOutcomes, possibleOutcomes);
     }
 
     public double chanceOfGettingAFace() {
