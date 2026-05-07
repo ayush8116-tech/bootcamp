@@ -3,6 +3,7 @@ package com.tw.bootcamp.problem02;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ProbabilityTest {
     @Test
@@ -49,5 +50,18 @@ class ProbabilityTest {
         Probability chanceOfGettingAtLeastOneTail = probabilityA.or(probabilityB);
 
         assertEquals(Probability.create(0.75), chanceOfGettingAtLeastOneTail);
+    }
+
+    @Test
+    void shouldThrowsAnError_whenProbabilityValueIsInvalid() {
+        assertThrows(
+                ImpossibleProbabilityException.class,
+                () -> Probability.create(-1)
+        );
+
+        assertThrows(
+                ImpossibleProbabilityException.class,
+                () -> Probability.create(2)
+        );
     }
 }

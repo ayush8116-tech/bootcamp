@@ -7,7 +7,9 @@ public class Probability {
         this.value = value;
     }
 
-    public static Probability create(double value) {
+    public static Probability create(double value) throws ImpossibleProbabilityException{
+        if(value < 0 || value > 1) throw new ImpossibleProbabilityException();
+
         return new Probability(value);
     }
 
