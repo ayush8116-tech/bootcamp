@@ -8,6 +8,12 @@ class CoinTest {
     @Test
     void shouldReturnProbability() {
         Coin coin = new Coin();
-        assertEquals(0.5, coin.chanceOfGettingTails());
+        assertEquals(50, coin.chanceOfGettingAFace());
+    }
+
+    @Test
+    void shouldReturnProbabilityOf50_whenNotGettingTails() {
+        Coin coin = new Coin();
+        assertEquals(50, coin.chanceOfNotGettingAFace());
     }
 }
