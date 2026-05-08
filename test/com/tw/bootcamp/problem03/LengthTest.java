@@ -10,7 +10,7 @@ class LengthTest {
         Length oneFt = Length.createFeetLength(1);
         Length twelveInches = Length.createInchLength(12);
 
-        assertTrue(oneFt.compare(twelveInches));
+        assertTrue(oneFt.isEqualTo(twelveInches));
     }
 
     @Test
@@ -18,7 +18,7 @@ class LengthTest {
         Length oneFt = Length.createFeetLength(1);
         Length twelveInches = Length.createInchLength(11);
 
-        assertFalse(oneFt.compare(twelveInches));
+        assertFalse(oneFt.isEqualTo(twelveInches));
     }
 
     @Test
@@ -26,7 +26,7 @@ class LengthTest {
         Length fiveCm = Length.createCentimeterLength(5);
         Length twoInch = Length.createInchLength(2);
 
-        assertTrue(fiveCm.compare(twoInch));
+        assertTrue(fiveCm.isEqualTo(twoInch));
     }
 
     @Test
@@ -34,7 +34,7 @@ class LengthTest {
         Length fourCm = Length.createCentimeterLength(4);
         Length twoInch = Length.createInchLength(2);
 
-        assertFalse(fourCm.compare(twoInch));
+        assertFalse(fourCm.isEqualTo(twoInch));
     }
 
     @Test
@@ -42,7 +42,7 @@ class LengthTest {
         Length oneCm = Length.createCentimeterLength(1);
         Length tenMm = Length.createMillimeterLength(10);
 
-        assertTrue(oneCm.compare(tenMm));
+        assertTrue(oneCm.isEqualTo(tenMm));
     }
 
     @Test
@@ -50,6 +50,17 @@ class LengthTest {
         Length oneCm = Length.createCentimeterLength(1);
         Length nineMM = Length.createMillimeterLength(9);
 
-        assertFalse(oneCm.compare(nineMM));
+        assertFalse(oneCm.isEqualTo(nineMM));
+    }
+
+    @Test
+    void shouldReturn4inch_whenAdding2inchWith2Inch() {
+        Length length1 = Length.createInchLength(2);
+        Length length2 = Length.createInchLength(2);
+        Length result = length1.add(length2);
+
+        Length expectedLength = Length.createInchLength(4);
+        assertEquals(expectedLength, result);
+
     }
 }

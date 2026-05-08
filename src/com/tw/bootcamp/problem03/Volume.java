@@ -24,7 +24,7 @@ public class Volume {
         return currentValue == convertedValue;
     }
 
-    private double convertToBase() {
+    public double convertToBase() {
         return this.unit.getRatioValue() * this.value;
     }
 }
