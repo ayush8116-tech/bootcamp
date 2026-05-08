@@ -1,6 +1,8 @@
 package com.tw.bootcamp.problem03;
 
 import org.junit.jupiter.api.Test;
+
+import static com.tw.bootcamp.problem03.LengthUnits.INCH;
 import static com.tw.bootcamp.problem03.VolumeUnits.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,8 +25,16 @@ class VolumeTest {
 
     @Test
     void shouldThrowError_whenVolumeValueIsNegative() {
-        assertThrows(InvalidValueException.class, () -> {
-            Volume.create(-1, LITER);
-        });
+        assertThrows(InvalidValueException.class, () -> Volume.create(-1, LITER));
+    }
+
+    @Test
+    void shouldReturn4_78liters_whenAdding1gallonWith1liter() {
+        Volume volume1 = Volume.create(1, GALLON);
+        Volume volume2 = Volume.create(1, LITER);
+        Volume result = volume1.add(volume2);
+
+        Volume expectedVolume = Volume.create(4.78, LITER);
+        assertEquals(expectedVolume, result);
     }
 }

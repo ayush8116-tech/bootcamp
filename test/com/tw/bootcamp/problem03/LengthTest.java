@@ -88,8 +88,6 @@ class LengthTest {
 
     @Test
     void shouldThrowError_whenLengthValueIsNegative() {
-        assertThrows(InvalidValueException.class, () -> {
-            Length.create(-1, INCH);
-        });
+        assertThrows(InvalidValueException.class, () -> Length.create(-1, INCH));
     }
 }
