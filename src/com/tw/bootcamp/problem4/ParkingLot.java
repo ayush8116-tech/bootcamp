@@ -12,6 +12,8 @@ public class ParkingLot {
     }
 
     public int park(Car car) {
+        if(isFull()) throw new OutOfCapacityException("Parking Lot is Full");
+
         parkedCars.add(car);
         return parkedCars.size();
     }
