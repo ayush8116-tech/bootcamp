@@ -2,14 +2,14 @@ package com.tw.bootcamp.problem03;
 
 public class Volume {
     private final double value;
-    private RatioToLiter unit;
+    private VolumeUnits unit;
 
-    public Volume(double value, RatioToLiter unit) {
+    public Volume(double value, VolumeUnits unit) {
         this.value = value;
         this.unit = unit;
     }
 
-    public static Volume create(double value, RatioToLiter unit) {
+    public static Volume create(double value, VolumeUnits unit) {
         return new Volume(value, unit);
     }
     public boolean compare(Volume volume) {
@@ -20,6 +20,6 @@ public class Volume {
     }
 
     public double convertToBase() {
-        return this.unit.getRatioValue() * this.value;
+        return this.unit.getLiterEquivalent() * this.value;
     }
 }

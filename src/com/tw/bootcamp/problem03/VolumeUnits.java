@@ -1,16 +1,16 @@
 package com.tw.bootcamp.problem03;
 
-public enum RatioToLiter {
+public enum VolumeUnits {
     LITER(1),
     GALLON(3.78);
 
     private final double ratio;
 
-    RatioToLiter(double ratio) {
+    VolumeUnits(double ratio) {
         this.ratio = ratio;
     }
 
-    public double getRatioValue() {
+    public double getLiterEquivalent() {
         return this.ratio;
     }
 }

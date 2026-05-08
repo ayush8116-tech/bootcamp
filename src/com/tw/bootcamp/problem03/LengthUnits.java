@@ -1,6 +1,6 @@
 package com.tw.bootcamp.problem03;
 
-public enum RatioToInch {
+public enum LengthUnits {
     FEET(12),
     CM(0.4),
     INCH(1),
@@ -8,11 +8,11 @@ public enum RatioToInch {
 
     private final double ratio;
 
-    RatioToInch(double ratio) {
+    LengthUnits(double ratio) {
         this.ratio = ratio;
     }
 
-    double getRatioToInch() {
+    double getInchEquivalent() {
         return this.ratio;
     }
 }

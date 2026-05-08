@@ -4,14 +4,14 @@ import java.util.Objects;
 
 public class Length {
     private final double value;
-    private final RatioToInch unit;
+    private final LengthUnits unit;
 
-    private Length(double value, RatioToInch unit) {
+    private Length(double value, LengthUnits unit) {
         this.value = value;
         this.unit = unit;
     }
 
-    public static Length create(double value,RatioToInch unit) {
+    public static Length create(double value, LengthUnits unit) {
         return new Length(value, unit);
     }
 
@@ -23,7 +23,7 @@ public class Length {
     }
 
     public double convertToBase() {
-        return this.value * this.unit.getRatioToInch();
+        return this.value * this.unit.getInchEquivalent();
     }
 
 
