@@ -2,19 +2,19 @@ package com.tw.bootcamp.problem03;
 
 public class Volume {
     private final double value;
-    private final String unit;
+    private RatioToLiter unit;
 
-    public Volume(double value, String unit) {
+    public Volume(double value, RatioToLiter unit) {
         this.value = value;
         this.unit = unit;
     }
 
     public static Volume createLiter(double value) {
-        return new Volume(value, "liter");
+        return new Volume(value, RatioToLiter.LITER);
     }
 
     public static Volume createGallon(double value) {
-        return new Volume(value, "gallon");
+        return new Volume(value, RatioToLiter.GALLON);
     }
 
     public boolean compare(Volume volume) {
@@ -25,10 +25,6 @@ public class Volume {
     }
 
     private double convertToBase() {
-        if(this.unit.equals("gallon")) {
-            return 3.78 * this.value;
-        }
-
-        return this.value;
+        return this.unit.getRatioValue() * this.value;
     }
 }
