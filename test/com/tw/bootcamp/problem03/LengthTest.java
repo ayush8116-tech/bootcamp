@@ -61,6 +61,16 @@ class LengthTest {
 
         Length expectedLength = Length.create(4, LengthUnits.INCH);
         assertEquals(expectedLength, result);
+    }
 
+    @Test
+    void shouldReturn3inch_whenAdding2inchWith2point5Cm() {
+        Length length1 = Length.create(2, LengthUnits.INCH);
+        Length length2 = Length.create(2.5, LengthUnits.CM);
+
+        Length result = length1.add(length2);
+
+        Length expectedLength = Length.create(3, LengthUnits.INCH);
+        assertEquals(expectedLength, result);
     }
 }

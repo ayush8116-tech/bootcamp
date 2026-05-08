@@ -26,9 +26,9 @@ public class Length {
         return this.value * this.unit.getInchEquivalent();
     }
 
-
     public Length add(Length length) {
-        return new Length(this.value + length.value, this.unit);
+        double result = this.convertToBase() + length.convertToBase();
+        return new Length(result, LengthUnits.INCH);
     }
 
     @Override
