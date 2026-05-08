@@ -10,7 +10,7 @@ class VolumeTest {
         Volume gallon = Volume.create(1, GALLON);
         Volume liters = Volume.create(3.78, LITER);
 
-        assertTrue(gallon.compare(liters));
+        assertTrue(gallon.isEqualTo(liters));
     }
 
     @Test
@@ -18,6 +18,13 @@ class VolumeTest {
         Volume gallon = Volume.create(1, GALLON);
         Volume liters = Volume.create(4, LITER);
 
-        assertFalse(gallon.compare(liters));
+        assertFalse(gallon.isEqualTo(liters));
+    }
+
+    @Test
+    void shouldThrowError_whenVolumeValueIsNegative() {
+        assertThrows(InvalidValueException.class, () -> {
+            Volume.create(-1, LITER);
+        });
     }
 }

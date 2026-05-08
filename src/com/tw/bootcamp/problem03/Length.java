@@ -12,6 +12,10 @@ public class Length {
     }
 
     public static Length create(double value, LengthUnits unit) {
+        if(value < 0) {
+            throw new InvalidValueException();
+        }
+
         return new Length(value, unit);
     }
 

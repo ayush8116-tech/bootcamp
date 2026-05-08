@@ -10,9 +10,14 @@ public class Volume {
     }
 
     public static Volume create(double value, VolumeUnits unit) {
+        if (value < 0) {
+            throw new InvalidValueException();
+        }
+
         return new Volume(value, unit);
     }
-    public boolean compare(Volume volume) {
+
+    public boolean isEqualTo(Volume volume) {
         double currentValue = this.convertToBase();
         double convertedValue = volume.convertToBase();
 
