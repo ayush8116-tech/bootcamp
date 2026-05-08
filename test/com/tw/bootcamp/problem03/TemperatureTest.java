@@ -2,6 +2,8 @@ package com.tw.bootcamp.problem03;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.InvalidClassException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TemperatureTest {

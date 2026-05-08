@@ -1,0 +1,30 @@
+package com.tw.bootcamp.problem4;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class ParkingLotTest {
+    @Test
+    void shouldParkACar_whenCarIsGiven() {
+        ParkingLot parkingLot = new ParkingLot(30);
+        Car car = new Car();
+
+        assertEquals(1, parkingLot.park(car));
+    }
+
+    @Test
+    void shouldReturnTrue_whenLotIsFull() {
+        ParkingLot parkingLot = new ParkingLot(1);
+        Car car = new Car();
+        parkingLot.park(car);
+        assertTrue(parkingLot.isFull());
+    }
+
+    @Test
+    void shouldReturnFalse_whenLotIsNotFull() {
+        ParkingLot parkingLot = new ParkingLot(30);
+
+        assertFalse(parkingLot.isFull());
+    }
+}

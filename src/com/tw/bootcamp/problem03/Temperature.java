@@ -15,10 +15,10 @@ public class Temperature {
         return new Temperature(value, unit);
     }
 
-
     public double convertToBase() {
-        if (this.unit.name().equals("FAHRENHEIT"))
+        if (this.unit == TemperatureUnits.FAHRENHEIT)
             return (this.value - 32) * 5 / 9;
+
         return this.value;
     }
 
