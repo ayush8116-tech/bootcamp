@@ -7,59 +7,59 @@ import static org.junit.jupiter.api.Assertions.*;
 class LengthTest {
     @Test
     void shouldReturnTrue_whenComparing1ftTo12Inch() {
-        Length oneFt = Length.createFeetLength(1);
-        Length twelveInches = Length.createInchLength(12);
+        Length oneFt = Length.create(1, RatioToInch.FEET);
+        Length twelveInches = Length.create(12, RatioToInch.INCH);
 
         assertTrue(oneFt.isEqualTo(twelveInches));
     }
 
     @Test
     void shouldReturnFalse_whenComparing1ftTo11Inch() {
-        Length oneFt = Length.createFeetLength(1);
-        Length twelveInches = Length.createInchLength(11);
+        Length oneFt = Length.create(1, RatioToInch.FEET);
+        Length twelveInches = Length.create(11, RatioToInch.INCH);
 
         assertFalse(oneFt.isEqualTo(twelveInches));
     }
 
     @Test
     void shouldReturnTrue_whenComparing5CmTo2Inch() {
-        Length fiveCm = Length.createCentimeterLength(5);
-        Length twoInch = Length.createInchLength(2);
+        Length fiveCm = Length.create(5, RatioToInch.CM);
+        Length twoInch = Length.create(2, RatioToInch.INCH);
 
         assertTrue(fiveCm.isEqualTo(twoInch));
     }
 
     @Test
     void shouldReturnFalse_whenComparing4CmTo2Inch() {
-        Length fourCm = Length.createCentimeterLength(4);
-        Length twoInch = Length.createInchLength(2);
+        Length fourCm = Length.create(4, RatioToInch.CM);
+        Length twoInch = Length.create(2, RatioToInch.INCH);
 
         assertFalse(fourCm.isEqualTo(twoInch));
     }
 
     @Test
     void shouldReturnTrue_whenComparing1cmWith10mm() {
-        Length oneCm = Length.createCentimeterLength(1);
-        Length tenMm = Length.createMillimeterLength(10);
+        Length oneCm = Length.create(1, RatioToInch.CM);
+        Length tenMm = Length.create(10, RatioToInch.MM);
 
         assertTrue(oneCm.isEqualTo(tenMm));
     }
 
     @Test
     void shouldReturnFalse_whenComparing1cmWith9mm() {
-        Length oneCm = Length.createCentimeterLength(1);
-        Length nineMM = Length.createMillimeterLength(9);
+        Length oneCm = Length.create(1, RatioToInch.CM);
+        Length nineMM = Length.create(9, RatioToInch.MM);
 
         assertFalse(oneCm.isEqualTo(nineMM));
     }
 
     @Test
     void shouldReturn4inch_whenAdding2inchWith2Inch() {
-        Length length1 = Length.createInchLength(2);
-        Length length2 = Length.createInchLength(2);
+        Length length1 = Length.create(2, RatioToInch.INCH);
+        Length length2 = Length.create(2, RatioToInch.INCH);
         Length result = length1.add(length2);
 
-        Length expectedLength = Length.createInchLength(4);
+        Length expectedLength = Length.create(4, RatioToInch.INCH);
         assertEquals(expectedLength, result);
 
     }

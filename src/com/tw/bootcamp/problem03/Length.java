@@ -11,20 +11,8 @@ public class Length {
         this.unit = unit;
     }
 
-    public static Length createCentimeterLength(double value) {
-        return new Length(value, RatioToInch.CM);
-    }
-
-    public static Length createInchLength(double value) {
-        return new Length(value, RatioToInch.INCH);
-    }
-
-    public static Length createFeetLength(double value) {
-        return new Length(value, RatioToInch.FEET);
-    }
-
-    public static Length createMillimeterLength(double value) {
-        return new Length(value, RatioToInch.MM);
+    public static Length create(double value,RatioToInch unit) {
+        return new Length(value, unit);
     }
 
     public boolean isEqualTo(Length length) {

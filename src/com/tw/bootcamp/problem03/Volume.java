@@ -9,14 +9,9 @@ public class Volume {
         this.unit = unit;
     }
 
-    public static Volume createLiter(double value) {
-        return new Volume(value, RatioToLiter.LITER);
+    public static Volume create(double value, RatioToLiter unit) {
+        return new Volume(value, unit);
     }
-
-    public static Volume createGallon(double value) {
-        return new Volume(value, RatioToLiter.GALLON);
-    }
-
     public boolean compare(Volume volume) {
         double currentValue = this.convertToBase();
         double convertedValue = volume.convertToBase();
