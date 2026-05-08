@@ -10,4 +10,12 @@ public class Inch {
     public boolean compare(double convertedInches) {
         return inches == convertedInches;
     }
+
+    public boolean compare(Centimeter centimeter) {
+        return centimeter.compare(this.inchToCm());
+    }
+
+    private double inchToCm() {
+        return this.inches * 2.5;
+    }
 }
