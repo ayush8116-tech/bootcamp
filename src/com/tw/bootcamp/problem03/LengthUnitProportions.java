@@ -1,6 +1,6 @@
 package com.tw.bootcamp.problem03;
 
-public enum UnitProportions {
+public enum LengthUnitProportions {
     FEET(12),
     CM(0.4),
     INCH(1),
@@ -8,7 +8,7 @@ public enum UnitProportions {
 
     private final double proportion;
 
-    UnitProportions(double proportion) {
+    LengthUnitProportions(double proportion) {
         this.proportion = proportion;
     }
 

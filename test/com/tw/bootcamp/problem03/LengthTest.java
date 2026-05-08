@@ -52,5 +52,4 @@ class LengthTest {
 
         assertFalse(oneCm.compare(nineMM));
     }
-
 }
