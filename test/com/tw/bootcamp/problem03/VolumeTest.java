@@ -2,8 +2,8 @@ package com.tw.bootcamp.problem03;
 
 import org.junit.jupiter.api.Test;
 
-import static com.tw.bootcamp.problem03.LengthUnits.INCH;
-import static com.tw.bootcamp.problem03.VolumeUnits.*;
+import static com.tw.bootcamp.problem03.VolumeUnits.GALLON;
+import static com.tw.bootcamp.problem03.VolumeUnits.LITER;
 import static org.junit.jupiter.api.Assertions.*;
 
 class VolumeTest {
@@ -12,7 +12,7 @@ class VolumeTest {
         Volume gallon = Volume.create(1, GALLON);
         Volume liters = Volume.create(3.78, LITER);
 
-        assertTrue(gallon.isEqualTo(liters));
+        assertEquals(gallon, liters);
     }
 
     @Test
@@ -20,7 +20,7 @@ class VolumeTest {
         Volume gallon = Volume.create(1, GALLON);
         Volume liters = Volume.create(4, LITER);
 
-        assertFalse(gallon.isEqualTo(liters));
+        assertNotEquals(gallon, liters);
     }
 
     @Test

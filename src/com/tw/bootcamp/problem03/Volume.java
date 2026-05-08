@@ -6,7 +6,7 @@ public class Volume {
     private final double value;
     private final VolumeUnits unit;
 
-    public Volume(double value, VolumeUnits unit) {
+    private Volume(double value, VolumeUnits unit) {
         this.value = value;
         this.unit = unit;
     }
@@ -17,13 +17,6 @@ public class Volume {
         }
 
         return new Volume(value, unit);
-    }
-
-    public boolean isEqualTo(Volume volume) {
-        double currentValue = this.convertToBase();
-        double convertedValue = volume.convertToBase();
-
-        return currentValue == convertedValue;
     }
 
     public double convertToBase() {
@@ -39,8 +32,8 @@ public class Volume {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Volume volume = (Volume) o;
-        double delta = value - volume.value;
-        return delta > -0.01 && delta < 0.01 && unit == volume.unit;
+        double delta = convertToBase() - volume.convertToBase();
+        return delta > -0.01 && delta < 0.01;
     }
 
     @Override

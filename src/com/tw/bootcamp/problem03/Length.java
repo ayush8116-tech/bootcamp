@@ -19,13 +19,6 @@ public class Length {
         return new Length(value, unit);
     }
 
-    public boolean isEqualTo(Length length) {
-        double currentValue = this.convertToBase();
-        double convertedValue = length.convertToBase();
-
-        return currentValue == convertedValue;
-    }
-
     public double convertToBase() {
         return this.value * this.unit.getInchEquivalent();
     }
@@ -39,7 +32,7 @@ public class Length {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Length length = (Length) o;
-        return Double.compare(value, length.value) == 0 && unit == length.unit;
+        return Double.compare(convertToBase(), length.convertToBase()) == 0;
     }
 
     @Override
