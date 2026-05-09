@@ -11,7 +11,7 @@ class BagTest {
         Bag bag = new Bag(12);
         Ball ball = new Ball();
 
-        assertTrue(bag.addBall(ball));
+        assertTrue(bag.addBall(ball, "Green"));
     }
 
     @Test
@@ -19,12 +19,12 @@ class BagTest {
         Bag bag = new Bag(12);
         for (int i = 0; i < 12; i++) {
             Ball ball = new Ball();
-            bag.addBall(ball);
+            bag.addBall(ball, "Green");
         }
 
         assertThrows(OutOfCapacityException.class, () -> {
             Ball ball = new Ball();
-            bag.addBall(ball);
+            bag.addBall(ball, "Blue");
         });
     }
 }
