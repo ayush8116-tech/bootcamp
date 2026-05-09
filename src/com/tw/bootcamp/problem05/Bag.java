@@ -7,10 +7,12 @@ import static com.tw.bootcamp.problem05.Color.GREEN;
 
 public class Bag {
     private final int capacity;
+    private final ArrayList<Color> RULES;
     private final TreeMap<Color, ArrayList<Ball>> balls;
 
-    public Bag(int capacity) {
+    public Bag(int capacity, ArrayList<Color> RULES) {
         this.capacity = capacity;
+        this.RULES = RULES;
         this.balls = new TreeMap<>();
     }
 
@@ -19,7 +21,7 @@ public class Bag {
             throw new OutOfCapacityException("Bag Capacity is Full");
         }
 
-        balls.putIfAbsent(color, new ArrayList<Ball>());
+        balls.putIfAbsent(color, new ArrayList<>());
         if (!withinLimit(color)) {
             throw new OutOfCapacityException("Color Limit Exceeds : " + color.name());
         }
@@ -28,22 +30,25 @@ public class Bag {
     }
 
     private boolean withinLimit(Color color) {
-        switch (color) {
-            case RED -> {
-                int limit = balls.get(GREEN).size();
-                return balls.get(color).size() < limit * 2;
-            }
-            case GREEN -> {
-                return balls.get(color).size() < 3;
-            }
-            case YELLOW -> {
-                return balls.get(color).size() < getBallCount() * 0.4;
-            }
-            default -> {
-                return true;
+        if (RULES.contains(color)) {
+
+            switch (color) {
+                case RED -> {
+                    int limit = balls.get(GREEN).size();
+                    return balls.get(color).size() < limit * 2;
+                }
+                case GREEN -> {
+                    return balls.get(color).size() < 3;
+                }
+                case YELLOW -> {
+                    return balls.get(color).size() < getBallCount() * 0.4;
+                }
+                default -> {
+                    return true;
+                }
             }
         }
-
+        return true;
     }
 
     private boolean isBagFull() {
