@@ -3,8 +3,7 @@ package com.tw.bootcamp.problem05;
 import org.junit.jupiter.api.Test;
 
 import static com.tw.bootcamp.problem05.Color.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BagTest {
     @Test
@@ -20,7 +19,7 @@ class BagTest {
         Bag bag = new Bag(12);
         for (int i = 0; i < 12; i++) {
             Ball ball = new Ball();
-            bag.addBall(ball, YELLOW);
+            bag.addBall(ball, BLUE);
         }
 
         assertThrows(OutOfCapacityException.class, () -> {
@@ -56,6 +55,36 @@ class BagTest {
         assertThrows(OutOfCapacityException.class, () -> {
             Ball redBall = new Ball();
             bag.addBall(redBall, RED);
+        });
+    }
+
+
+    @Test
+    public void shouldNotThrowError_whenTriesToAddYellowBallsNotMoreThanFortyPerCent() {
+        assertDoesNotThrow(() -> {
+            Bag bag = new Bag(12);
+            Ball ball = new Ball();
+            bag.addBall(ball, GREEN);
+            for (int i = 0; i < 2; i++) {
+                Ball blueBall = new Ball();
+                bag.addBall(blueBall, BLUE);
+
+                Ball yellowBall = new Ball();
+                bag.addBall(yellowBall, YELLOW);
+            }
+        });
+    }
+
+    @Test
+    public void shouldThrowError_whenTriesToAddYellowBallsMoreThanFortyPerCent() {
+        assertThrows(OutOfCapacityException.class, () -> {
+            Bag bag = new Bag(12);
+            Ball ball = new Ball();
+            bag.addBall(ball, GREEN);
+            for (int i = 0; i < 2; i++) {
+                Ball yellowBall = new Ball();
+                bag.addBall(yellowBall, YELLOW);
+            }
         });
     }
 

@@ -35,15 +35,23 @@ public class Bag {
             return balls.get(color).size() < 3;
         }
 
+        if (color == Color.YELLOW) {
+            return balls.get(color).size() < getBallCount() * 0.4;
+        }
+
         return true;
     }
 
     private boolean isBagFull() {
+        int ballCount = getBallCount();
+        return ballCount == capacity;
+    }
+
+    private int getBallCount() {
         int ballCount = 0;
         for (Color color : balls.keySet()) {
             ballCount += balls.get(color).size();
         }
-
-        return ballCount == capacity;
+        return ballCount;
     }
 }
