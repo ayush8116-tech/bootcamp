@@ -88,4 +88,34 @@ class BagTest {
         });
     }
 
+    @Test
+    void shouldReturnBallSummary_whenBallsAreThereInTheBag() {
+        Bag bag = new Bag(12);
+
+        for (int i = 0; i < 2; i++) {
+            Ball greenBall = new Ball();
+            bag.addBall(greenBall, GREEN);
+
+            Ball yellowBall = new Ball();
+            bag.addBall(yellowBall, YELLOW);
+        }
+
+        for (int i = 0; i < 4; i++) {
+            Ball redBall = new Ball();
+            bag.addBall(redBall, RED);
+
+            Ball blueBall = new Ball();
+            bag.addBall(blueBall, BLUE);
+        }
+
+        String expectedSummary = """
+                GREEN  : 2
+                BLUE   : 4
+                RED    : 4
+                YELLOW : 2
+                
+                TOTAL : 12""";
+
+        assertEquals(expectedSummary, bag.toString());
+    }
 }

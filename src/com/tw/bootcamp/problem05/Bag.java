@@ -1,15 +1,17 @@
 package com.tw.bootcamp.problem05;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.TreeMap;
+
+import static com.tw.bootcamp.problem05.Color.GREEN;
 
 public class Bag {
     private final int capacity;
-    private final HashMap<Color, ArrayList<Ball>> balls;
+    private final TreeMap<Color, ArrayList<Ball>> balls;
 
     public Bag(int capacity) {
         this.capacity = capacity;
-        this.balls = new HashMap<>();
+        this.balls = new TreeMap<>();
     }
 
     public boolean addBall(Ball ball, Color color) {
@@ -19,27 +21,29 @@ public class Bag {
 
         balls.putIfAbsent(color, new ArrayList<Ball>());
         if (!withinLimit(color)) {
-            throw new OutOfCapacityException("Color Limit Exceeds : " + Color.GREEN.name());
+            throw new OutOfCapacityException("Color Limit Exceeds : " + color.name());
         }
 
         return balls.get(color).add(ball);
     }
 
     private boolean withinLimit(Color color) {
-        if (color == Color.RED) {
-            int limit = balls.get(Color.GREEN).size();
-            return balls.get(color).size() <= limit;
+        switch (color) {
+            case RED -> {
+                int limit = balls.get(GREEN).size();
+                return balls.get(color).size() < limit * 2;
+            }
+            case GREEN -> {
+                return balls.get(color).size() < 3;
+            }
+            case YELLOW -> {
+                return balls.get(color).size() < getBallCount() * 0.4;
+            }
+            default -> {
+                return true;
+            }
         }
 
-        if (color == Color.GREEN) {
-            return balls.get(color).size() < 3;
-        }
-
-        if (color == Color.YELLOW) {
-            return balls.get(color).size() < getBallCount() * 0.4;
-        }
-
-        return true;
     }
 
     private boolean isBagFull() {
@@ -53,5 +57,20 @@ public class Bag {
             ballCount += balls.get(color).size();
         }
         return ballCount;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder summary = new StringBuilder();
+        for (Color color : balls.keySet()) {
+            summary.append(String.format("%-7s", color))
+                    .append(": ")
+                    .append(balls.get(color).size())
+                    .append("\n");
+        }
+
+        int total = getBallCount();
+        summary.append("\n").append("TOTAL : ").append(total);
+        return summary.toString();
     }
 }

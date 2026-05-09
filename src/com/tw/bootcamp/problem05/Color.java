@@ -1,7 +1,7 @@
 package com.tw.bootcamp.problem05;
 
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public enum Color {
     GREEN,
