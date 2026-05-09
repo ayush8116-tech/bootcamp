@@ -19,7 +19,19 @@ public class ParkingLots {
                 return parkingLot.park(car);
             }
         }
+
         throw new OutOfCapacityException("No Parking Lots Available");
+    }
+
+
+    public boolean isParkingLotAvailable() {
+        for (ParkingLot parkingLot : this.parkingLotList) {
+            if (!parkingLot.isFull()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
 
