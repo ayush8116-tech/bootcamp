@@ -42,4 +42,21 @@ class BagTest {
             bag.addBall(ball, GREEN);
         });
     }
+
+    @Test
+    public void shouldThrowError_whenTriesToAddRedBallsMoreThanDoubleOfGreenBalls() {
+        Bag bag = new Bag(12);
+        Ball ball = new Ball();
+        bag.addBall(ball, GREEN);
+        for (int i = 0; i < 2; i++) {
+            Ball redBall = new Ball();
+            bag.addBall(redBall, RED);
+        }
+
+        assertThrows(OutOfCapacityException.class, () -> {
+            Ball redBall = new Ball();
+            bag.addBall(redBall, RED);
+        });
+    }
+
 }

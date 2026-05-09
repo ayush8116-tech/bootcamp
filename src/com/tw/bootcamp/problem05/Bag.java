@@ -18,7 +18,7 @@ public class Bag {
         }
 
         balls.putIfAbsent(color, new ArrayList<Ball>());
-        if (withinLimit(color)) {
+        if (!withinLimit(color)) {
             throw new OutOfCapacityException("Color Limit Exceeds : " + Color.GREEN.name());
         }
 
@@ -26,7 +26,16 @@ public class Bag {
     }
 
     private boolean withinLimit(Color color) {
-        return color.withinLimit(balls.get(color).size());
+        if (color == Color.RED) {
+            int limit = balls.get(Color.GREEN).size();
+            return balls.get(color).size() <= limit;
+        }
+
+        if (color == Color.GREEN) {
+            return balls.get(color).size() < 3;
+        }
+
+        return true;
     }
 
     private boolean isBagFull() {
