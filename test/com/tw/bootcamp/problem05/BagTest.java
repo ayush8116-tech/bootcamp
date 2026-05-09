@@ -32,10 +32,10 @@ class BagTest {
 
     @Test
     public void shouldThrowError_whenTriesToAddMoreThan3GreenBalls() {
-        ArrayList<Color> colors = new ArrayList<>();
-        colors.add(GREEN);
+        ArrayList<Color> RULES = new ArrayList<>();
+        RULES.add(GREEN);
 
-        Bag bag = new Bag(12, colors);
+        Bag bag = new Bag(12, RULES);
         for (int i = 0; i < 3; i++) {
             Ball ball = new Ball();
             bag.addBall(ball, GREEN);
@@ -49,11 +49,11 @@ class BagTest {
 
     @Test
     public void shouldThrowError_whenTriesToAddRedBallsMoreThanDoubleOfGreenBalls() {
-        ArrayList<Color> colors = new ArrayList<>();
-        colors.add(GREEN);
-        colors.add(RED);
+        ArrayList<Color> RULES = new ArrayList<>();
+        RULES.add(GREEN);
+        RULES.add(RED);
 
-        Bag bag = new Bag(12, colors);
+        Bag bag = new Bag(12, RULES);
         Ball ball = new Ball();
         bag.addBall(ball, GREEN);
         for (int i = 0; i < 2; i++) {
@@ -71,12 +71,12 @@ class BagTest {
     @Test
     public void shouldNotThrowError_whenTriesToAddYellowBallsNotMoreThanFortyPerCent() {
         assertDoesNotThrow(() -> {
-            ArrayList<Color> colors = new ArrayList<>();
-            colors.add(GREEN);
-            colors.add(RED);
-            colors.add(YELLOW);
+            ArrayList<Color> RULES = new ArrayList<>();
+            RULES.add(GREEN);
+            RULES.add(RED);
+            RULES.add(YELLOW);
 
-            Bag bag = new Bag(12, colors);
+            Bag bag = new Bag(12, RULES);
             Ball ball = new Ball();
             bag.addBall(ball, GREEN);
             for (int i = 0; i < 2; i++) {
@@ -92,12 +92,12 @@ class BagTest {
     @Test
     public void shouldThrowError_whenTriesToAddYellowBallsMoreThanFortyPerCent() {
         assertThrows(OutOfCapacityException.class, () -> {
-            ArrayList<Color> colors = new ArrayList<>();
-            colors.add(GREEN);
-            colors.add(RED);
-            colors.add(YELLOW);
+            ArrayList<Color> RULES = new ArrayList<>();
+            RULES.add(GREEN);
+            RULES.add(RED);
+            RULES.add(YELLOW);
 
-            Bag bag = new Bag(12, colors);
+            Bag bag = new Bag(12, RULES);
             Ball ball = new Ball();
             bag.addBall(ball, GREEN);
             for (int i = 0; i < 2; i++) {
@@ -109,12 +109,12 @@ class BagTest {
 
     @Test
     void shouldReturnBallSummary_whenBallsAreThereInTheBag() {
-        ArrayList<Color> colors = new ArrayList<>();
-        colors.add(GREEN);
-        colors.add(RED);
-        colors.add(YELLOW);
+        ArrayList<Color> RULES = new ArrayList<>();
+        RULES.add(GREEN);
+        RULES.add(RED);
+        RULES.add(YELLOW);
 
-        Bag bag = new Bag(12, colors);
+        Bag bag = new Bag(12, RULES);
 
         for (int i = 0; i < 2; i++) {
             Ball greenBall = new Ball();
@@ -139,6 +139,28 @@ class BagTest {
                 YELLOW : 2
 
                 TOTAL : 12""";
+
+        assertEquals(expectedSummary, bag.toString());
+    }
+
+    @Test
+    void shouldReturnBallSummary_whenBallsAreNotThereInTheBag() {
+        ArrayList<Color> RULES = new ArrayList<>();
+        Bag bag = new Bag(12, RULES);
+
+        for (int i = 0; i < 2; i++) {
+            Ball greenBall = new Ball();
+            bag.addBall(greenBall, GREEN);
+
+            Ball yellowBall = new Ball();
+            bag.addBall(yellowBall, YELLOW);
+        }
+
+        String expectedSummary = """
+                GREEN  : 2
+                YELLOW : 2
+
+                TOTAL : 4""";
 
         assertEquals(expectedSummary, bag.toString());
     }

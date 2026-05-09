@@ -31,7 +31,6 @@ public class Bag {
 
     private boolean withinLimit(Color color) {
         if (RULES.contains(color)) {
-
             switch (color) {
                 case RED -> {
                     int limit = balls.get(GREEN).size();
@@ -48,6 +47,7 @@ public class Bag {
                 }
             }
         }
+
         return true;
     }
 
