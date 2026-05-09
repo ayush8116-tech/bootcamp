@@ -1,4 +1,4 @@
-package com.tw.bootcamp.problem4;
+package com.tw.bootcamp.problem04;
 
 import java.util.ArrayList;
 

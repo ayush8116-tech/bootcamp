@@ -1,4 +1,4 @@
-package com.tw.bootcamp.problem4;
+package com.tw.bootcamp.problem04;
 
 import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class ParkingLotsTest {
+class AttendantTest {
 
     @Test
     void shouldReturnTrue_whenParkACarInFirstParkingLot() {
@@ -18,8 +18,9 @@ class ParkingLotsTest {
         parkingLotList.add(parkingLot1);
         parkingLotList.add(parkingLot2);
 
-        ParkingLots parkingLots = ParkingLots.create(parkingLotList);
-        assertTrue(parkingLots.park(car));
+        Assistant assistant = new Assistant("");
+        Attendant attendant = Attendant.create(parkingLotList);
+        assertTrue(attendant.park(car));
     }
 
     @Test
@@ -31,9 +32,10 @@ class ParkingLotsTest {
         ArrayList<ParkingLot> parkingLotList = new ArrayList<>();
         parkingLotList.add(parkingLot1);
         parkingLotList.add(parkingLot2);
-        ParkingLots parkingLots = ParkingLots.create(parkingLotList);
+        Assistant assistant = new Assistant("");
+        Attendant attendant = Attendant.create(parkingLotList);
 
-        assertTrue(parkingLots.park(car));
+        assertTrue(attendant.park(car));
     }
 
     @Test
@@ -45,10 +47,11 @@ class ParkingLotsTest {
         ArrayList<ParkingLot> parkingLotList = new ArrayList<>();
         parkingLotList.add(parkingLot1);
         parkingLotList.add(parkingLot2);
-        ParkingLots parkingLots = ParkingLots.create(parkingLotList);
+        Assistant assistant = new Assistant("");
+        Attendant attendant = Attendant.create(parkingLotList);
         when(parkingLot2.park(any(Car.class))).thenReturn(true);
 
-        assertTrue(parkingLots.park(car));
+        assertTrue(attendant.park(car));
 
         verify(parkingLot2).park(any(Car.class));
     }
@@ -62,9 +65,10 @@ class ParkingLotsTest {
         ArrayList<ParkingLot> parkingLotList = new ArrayList<>();
         parkingLotList.add(parkingLot1);
         parkingLotList.add(parkingLot2);
-        ParkingLots parkingLots = ParkingLots.create(parkingLotList);
+        Assistant assistant = new Assistant("");
+        Attendant attendant = Attendant.create(parkingLotList);
 
-        assertTrue(parkingLots.isParkingLotAvailable());
+        assertTrue(attendant.isParkingLotAvailable());
     }
 
     @Test
@@ -76,9 +80,10 @@ class ParkingLotsTest {
         ArrayList<ParkingLot> parkingLotList = new ArrayList<>();
         parkingLotList.add(parkingLot1);
         parkingLotList.add(parkingLot2);
-        ParkingLots parkingLots = ParkingLots.create(parkingLotList);
+        Assistant assistant = new Assistant("");
+        Attendant attendant = Attendant.create(parkingLotList);
 
-        assertTrue(parkingLots.isParkingLotAvailable());
+        assertTrue(attendant.isParkingLotAvailable());
         verify(parkingLot2).isFull();
     }
 }
