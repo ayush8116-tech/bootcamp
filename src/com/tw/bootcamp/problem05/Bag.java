@@ -12,7 +12,7 @@ public class Bag {
     }
 
     public boolean addBall(Ball ball) {
-        if(this.balls.size() == 12) {
+        if(this.balls.size() == this.capacity) {
             throw new OutOfCapacityException("Bag Capacity is Full");
         }
 
