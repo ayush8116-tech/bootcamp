@@ -10,7 +10,7 @@ class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(30);
         Car car = new Car();
 
-        assertEquals(1, parkingLot.park(car));
+        assertTrue(parkingLot.park(car));
     }
 
     @Test

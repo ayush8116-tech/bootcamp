@@ -11,11 +11,10 @@ public class ParkingLot {
         parkedCars = new ArrayList<>(capacity);
     }
 
-    public int park(Car car) {
+    public boolean park(Car car) {
         if(isFull()) throw new OutOfCapacityException("Parking Lot is Full");
 
-        parkedCars.add(car);
-        return parkedCars.size();
+        return parkedCars.add(car);
     }
 
     public boolean isFull() {
