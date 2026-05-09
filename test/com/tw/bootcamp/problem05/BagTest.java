@@ -2,6 +2,7 @@ package com.tw.bootcamp.problem05;
 
 import org.junit.jupiter.api.Test;
 
+import static com.tw.bootcamp.problem05.Color.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -11,7 +12,7 @@ class BagTest {
         Bag bag = new Bag(12);
         Ball ball = new Ball();
 
-        assertTrue(bag.addBall(ball, "Green"));
+        assertTrue(bag.addBall(ball, GREEN));
     }
 
     @Test
@@ -19,12 +20,26 @@ class BagTest {
         Bag bag = new Bag(12);
         for (int i = 0; i < 12; i++) {
             Ball ball = new Ball();
-            bag.addBall(ball, "Green");
+            bag.addBall(ball, YELLOW);
         }
 
         assertThrows(OutOfCapacityException.class, () -> {
             Ball ball = new Ball();
-            bag.addBall(ball, "Blue");
+            bag.addBall(ball, BLUE);
+        });
+    }
+
+    @Test
+    public void shouldThrowError_whenTriesToAddMoreThan3GreenBalls() {
+        Bag bag = new Bag(12);
+        for (int i = 0; i < 3; i++) {
+            Ball ball = new Ball();
+            bag.addBall(ball, GREEN);
+        }
+
+        assertThrows(OutOfCapacityException.class, () -> {
+            Ball ball = new Ball();
+            bag.addBall(ball, GREEN);
         });
     }
 }
